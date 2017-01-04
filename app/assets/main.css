@@ -116,7 +116,7 @@ fieldset {
 .form-help {
   margin-top: 0.125rem;
   margin-left: 0.125rem;
-  color: #b3b3b3;
+  color: white;
   font-size: 0.8rem; }
   .checkbox .form-help,
   .form-radio .form-help,
@@ -152,14 +152,14 @@ fieldset {
   pointer-events: none;
   padding-left: 0.125rem;
   z-index: 1;
-  color: #b3b3b3;
+  color: white;
   font-size: 1rem;
   font-weight: normal;
   transition: all 0.28s ease; }
 
 .form-group .bar {
   position: relative;
-  border-bottom: 0.0625rem solid #999;
+  border-bottom: 0.0625rem solid #FFF;
   display: block; }
   .form-group .bar::before {
     content: '';
@@ -200,7 +200,7 @@ fieldset {
 .form-group textarea:valid,
 .form-group textarea.form-file,
 .form-group textarea.has-value {
-  color: #333; }
+  color: #FFF; }
   .form-group select ~ .control-label,
   .form-group input:focus ~ .control-label,
   .form-group input:valid ~ .control-label,
@@ -211,7 +211,7 @@ fieldset {
   .form-group textarea.form-file ~ .control-label,
   .form-group textarea.has-value ~ .control-label {
     font-size: 0.8rem;
-    color: gray;
+    color: #e6e6e6;
     top: -1rem;
     left: 0; }
 
@@ -235,7 +235,7 @@ fieldset {
   cursor: pointer;
   padding-left: 2rem;
   text-align: left;
-  color: #333;
+  color: #FFF;
   display: block; }
 
 .checkbox input,
@@ -255,7 +255,7 @@ fieldset {
     display: block;
     font-size: 1rem;
     user-select: none;
-    color: #999; }
+    color: #FFF; }
     .radio .helper::before, .radio .helper::after {
       content: '';
       position: absolute;
@@ -282,7 +282,7 @@ fieldset {
   margin-top: 3rem;
   margin-bottom: 1rem; }
   .checkbox .helper {
-    color: #999;
+    color: #FFF;
     position: absolute;
     top: 0;
     left: 0;
