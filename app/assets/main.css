@@ -1,0 +1,7 @@
+* {
+  box-sizing: border-box; }
+
+#container {
+  color: red;
+  border-style: solid;
+  border-color: black; }

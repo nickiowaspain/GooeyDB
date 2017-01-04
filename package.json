@@ -1,0 +1,32 @@
+{
+  "name": "gooeydb",
+  "version": "1.0.0",
+  "description": "A very nice GUI for your PostGresQL Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/gulp",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-jsj/GooeyDB.git"
+  },
+  "author": "team-jsj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/team-jsj/GooeyDB/issues"
+  },
+  "homepage": "https://github.com/team-jsj/GooeyDB#readme",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^3.0.0",
+    "nodemon": "^1.11.0",
+    "pg": "^6.1.2",
+    "sequelize": "^3.28.0"
+  }
+}
