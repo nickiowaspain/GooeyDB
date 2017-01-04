@@ -1,7 +1,59 @@
 * {
   box-sizing: border-box; }
 
+html {
+  min-height: 100vh;
+  position: relative; }
+
+body {
+  height: 100%;
+  display: flex;
+  flex-wrap: 'no-wrap';
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+  margin: 0; }
+
 #container {
-  color: red;
-  border-style: solid;
-  border-color: black; }
+  display: flex;
+  margin: 0 auto;
+  background-color: #81D4FA;
+  flex-flow: column;
+  width: 100%;
+  height: 100vh; }
+  #container #menu {
+    background-color: #607D8B;
+    height: 55px; }
+  #container #app {
+    display: flex;
+    flex-direction: row;
+    height: 100%; }
+    #container #app #left-panel {
+      background-color: #1DE9B6;
+      width: 25%;
+      max-width: 250px;
+      position: relative; }
+      #container #app #left-panel #db-selector {
+        height: 100px;
+        background-color: limegreen; }
+      #container #app #left-panel #table-actions {
+        background-color: red;
+        height: 150px;
+        width: 100%;
+        bottom: 0;
+        position: absolute; }
+    #container #app #content-panel {
+      background-color: yellow;
+      flex: 1 1 auto; }
+      #container #app #content-panel #action-bar {
+        height: 50px;
+        background-color: lightblue; }
+      #container #app #content-panel #search-filter {
+        height: 50px;
+        background-color: magenta; }
+  #container #footer {
+    position: absolute;
+    background-color: pink;
+    height: 55px;
+    bottom: 0;
+    width: 100%; }

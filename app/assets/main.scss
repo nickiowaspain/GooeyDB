@@ -1,9 +1,85 @@
+$primary: #81D4FA;
+$secondary: #607D8B;
+$accent: #1DE9B6;
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100vh;
+  position: relative;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-wrap: 'no-wrap';
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
 #container {
-  color: red;
-  border-style: solid;
-  border-color: black;
+  display: flex;
+  margin: 0 auto;
+  background-color: $primary;
+  flex-flow: column;
+  width: 100%;
+  height: 100vh;
+
+  #menu {
+    background-color: $secondary;
+    height: 55px;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+    #left-panel {
+      background-color: $accent;
+      width: 25%;
+      max-width: 250px;
+      position: relative;
+
+      #db-selector {
+        height: 100px;
+        background-color: limegreen;
+      }
+
+      #table-actions {
+        background-color: red;
+        height: 150px;
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+      }
+    }
+
+    #content-panel {
+      background-color: yellow;
+      flex: 1 1 auto;
+
+      #action-bar {
+        height: 50px;
+        background-color: lightblue;
+      }
+
+      #search-filter {
+        height: 50px;
+        background-color: magenta;
+      }
+    }
+  }
+
+  #footer {
+    position: absolute;
+    background-color: pink;
+    height: 55px;
+    bottom: 0;
+    width: 100%;
+  }
 }
