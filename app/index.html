@@ -10,6 +10,12 @@
   <script type="text/javascript" src="angular/angular.min.js"></script>
   <script type="text/javascript" src="angular-route/angular-route.min.js"></script>
   <script type="text/javascript" src="./controllers/homeController.js"></script>
+  <script type="text/javascript" src="./directives/menuBar.js"></script>
+  <script type="text/javascript" src="./directives/databaseSelector.js"></script>
+  <script type="text/javascript" src="./directives/actionBar.js"></script>
+  <script type="text/javascript" src="./directives/breadcrumbs.js"></script>
+  <script type="text/javascript" src="./directives/tableActions.js"></script>
+  <script type="text/javascript" src="./directives/tableSelector.js"></script>
   <script type="text/javascript" src="./app.js"></script>
 </head>
 <body ng-app="myApp">
@@ -24,8 +30,72 @@
   FORMS ARE TAKEN FROM HERE:
   http://codepen.io/jonnitto/pen/OVmvPB
  -->
+<menu-bar></menu-bar>
 
-<div ng-view></div>
+<!-- POTENTIAL SLIDE OUT DRAWER -->
+
+    <!--<div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Title</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+      </nav>
+    </div>-->
+
+<!-- CONTENT -->
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div class="mdl-grid" id="app">
+<!-- LEFT PANEL -->
+          <div class="mdl-cell mdl-cell--3-col" id="left-panel">
+<!-- DATABASE SELECTOR -->
+            <div class="mdl-grid" id="db-selector">
+              <div class="mdl-cell mdl-cell--12-col">
+                <database-selector></database-selector>
+              </div>
+            </div>
+<!-- TABLE SELECTOR -->
+            <div class="mdl-grid" id="table-selector">
+              <div class="mdl-cell mdl-cell--12-col">
+               <table-selector></table-selector>
+              </div>
+            </div>
+            <div class="mdl-grid" id="table-actions">
+<!-- TABLE ACTIONS -->
+              <div class="mdl-cell mdl-cell--12-col">
+                 <table-actions></table-actions>
+              </div>
+          </div>
+          </div>
+<!-- CONTENT-PANEL -->
+          <div class="mdl-cell mdl-cell--9-col" id="content-panel">
+<!-- BREADCRUMBS -->
+            <div class="mdl-grid" id="breadcrumbs">
+              <div class="mdl-cell mdl-cell--12-col">
+                <breadcrumbs></breadcrumbs>
+              </div>
+            </div>
+<!-- TABLE ACTION BAR -->
+            <div class="mdl-grid" id="action-bar">
+              <div class="mdl-cell mdl-cell--12-col">
+                <action-bar></action-bar>
+              </div>
+            </div>
+<!-- TABLE -->
+            <div class="mdl-grid" id="content-display">
+              <div class="mdl-cell mdl-cell--12-col ">
+                  <div ng-view></div>
+                </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </main>
+
+
 
 <!-- FOOTER -->
   <footer class="mdl-mini-footer">

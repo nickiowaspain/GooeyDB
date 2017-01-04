@@ -4,5 +4,5 @@ angular
 
 
 function HomeController($scope) {
-
+  $scope.name = 'Jimmy';
 }

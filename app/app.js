@@ -1,7 +1,13 @@
 var app = angular
 .module('myApp', [
   'ngRoute',
-  'HomeController'
+  'HomeController',
+  'MenuBar',
+  'DatabaseSelector',
+  'Breadcrumbs',
+  'ActionBar',
+  'TableActions',
+  'TableSelector'
 ]);
 
 app.config(configFunction);
