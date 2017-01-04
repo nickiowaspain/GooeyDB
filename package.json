@@ -25,6 +25,7 @@
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^3.0.0",
+    "materialize-css": "^0.97.8",
     "nodemon": "^1.11.0",
     "pg": "^6.1.2",
     "sequelize": "^3.28.0"
