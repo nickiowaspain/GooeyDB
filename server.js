@@ -9,5 +9,6 @@ const PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'app')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));

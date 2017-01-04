@@ -7,8 +7,12 @@
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-green.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script type="text/javascript" src="angular/angular.min.js"></script>
+  <script type="text/javascript" src="angular-route/angular-route.min.js"></script>
+  <script type="text/javascript" src="./controllers/homeController.js"></script>
+  <script type="text/javascript" src="./app.js"></script>
 </head>
-<body ng-app="app">
+<body ng-app="myApp">
 <!-- MATERIAL DESIGN LITE INDEX
   DOCUMENTATION: https://getmdl.io/components/index.html
   ICONS LIST: https://material.io/icons/
@@ -21,226 +25,8 @@
   http://codepen.io/jonnitto/pen/OVmvPB
  -->
 
-<!-- CONNECT TO DATABASE -->
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title left">GooeyDB</span>
-        <div class="mdl-layout-spacer"></div>
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <div class="form-group">
-            <input type="text" id="username">
-              <label class="control-label" for="username">Username</label>
-            </input>
-            <i class="bar"></i>
-          </div>
-          <div class="form-group">
-            <input type="text" id="password">
-              <label class="control-label" for="password">Password</label>
-            </input>
-            <i class="bar"></i>
-          </div>
-          <div class="form-group">
-            <input type="text" id="url">
-              <label class="control-label" for="url">URL</label>
-            </input>
-            <i class="bar"></i>
-          </div>
-          <div class="form-group">
-            <input type="text" id="dbname">
-              <label class="control-label" for="dbname">DB Name</label>
-            </input>
-            <i class="bar"></i>
-          </div>
-        </nav>
-      </div>
-    </header>
+<div ng-view></div>
 
-<!-- POTENTIAL SLIDE OUT DRAWER -->
-
-    <!--<div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Title</span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-      </nav>
-    </div>-->
-
-<!-- CONTENT -->
-    <main class="mdl-layout__content">
-      <div class="page-content">
-        <div class="mdl-grid" id="app">
-<!-- LEFT PANEL -->
-          <div class="mdl-cell mdl-cell--3-col" id="left-panel">
-<!-- DATABASE SELECTOR -->
-            <div class="mdl-grid" id="db-selector">
-              <div class="mdl-cell mdl-cell--12-col">
-                  <div class="demo-card-event mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
-                      <h4>
-                        Database Name
-                        <div class="form-group">
-                          <select>
-                            <option>Value 1</option>
-                            <option>Value 2</option>
-                          </select>
-                          <label class="control-label" for="select">Selectbox</label><i class="bar"></i>
-                        </div>
-                      </h4>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Create New Database
-                      </a>
-                      <div class="mdl-layout-spacer"></div>
-                      <!--<i class="material-icons">database</i>-->
-                    </div>
-                  </div>
-              </div>
-            </div>
-<!-- TABLE SELECTOR -->
-            <div class="mdl-grid" id="table-selector">
-              <div class="mdl-cell mdl-cell--12-col">
-                  <div class="demo-card-event mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
-                      <h4>
-                        Table Selector
-                        <ul>
-                          <li>Item 1</li>
-                          <li>Item 2</li>
-                        </ul>
-                      </h4>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Create New Table
-                      </a>
-                      <div class="mdl-layout-spacer"></div>
-                      <!--<i class="material-icons">database</i>-->
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="mdl-grid" id="table-actions">
-<!-- TABLE ACTIONS -->
-              <div class="mdl-cell mdl-cell--12-col">
-                  <div class="demo-card-event mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
-                      <h4>
-                        Table Actions
-                      </h4>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Create New Table
-                      </a>
-                      <!--<div class="mdl-layout-spacer"></div>
-                      <i class="material-icons">database</i>-->
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Create New Table
-                      </a>
-                      <!--<div class="mdl-layout-spacer"></div>
-                      <i class="material-icons">database</i>-->
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Create New Table
-                      </a>
-                      <!--<div class="mdl-layout-spacer"></div>
-                      <i class="material-icons">database</i>-->
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-<!-- CONTENT-PANEL -->
-          <div class="mdl-cell mdl-cell--9-col" id="content-panel">
-<!-- BREADCRUMBS -->
-            <div class="mdl-grid" id="bread-crumbs">
-              <div class="mdl-cell mdl-cell--12-col">
-                <div class="mdl-layout__header-row mdl-layout__header">
-                  <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="">DBName</a>
-                    <a class="mdl-navigation__link" href=""><i class="material-icons">input</i></a>
-                    <a class="mdl-navigation__link" href="">TableName</a>
-                    <a class="mdl-navigation__link" href=""><i class="material-icons">input</i></a>
-                    <a class="mdl-navigation__link" href="">RowID</a>
-                    <a class="mdl-navigation__link" href=""><i class="material-icons">input</i></a>
-                    <a class="mdl-navigation__link" href="">ColumnName</a>
-                 </nav>
-                </div>
-              </div>
-            </div>
-<!-- TABLE ACTION BAR -->
-            <div class="mdl-grid" id="action-bar">
-              <div class="mdl-cell mdl-cell--12-col">
-                <div class="mdl-layout__header-row mdl-layout__header">
-                  <!-- Title -->
-                  <span class="mdl-layout-title">Table Action Bar</span>
-                  <!-- Add spacer, to align navigation to the right -->
-                  <div class="mdl-layout-spacer"></div>
-                  <!-- Navigation. We hide it in small screens. -->
-                  <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href=""><i class="material-icons">add</i></a>
-                    <a class="mdl-navigation__link" href=""><i class="material-icons">delete</i></a>
-                    <span class="mdl-navigation__link">
-                      <div class="form-group">
-                        <input type="text" id="dbname">
-                          <label class="control-label" for="dbname">Search</label>
-                        </input>
-                        <i class="bar"></i>
-                      </div>
-                    </span>
-                    <span class="mdl-navigation__link">
-                      <div class="form-group">
-                        <input type="text" id="dbname">
-                          <label class="control-label" for="dbname">Filter</label>
-                        </input>
-                        <i class="bar"></i>
-                      </div>
-                    </span>
-                 </nav>
-                </div>
-              </div>
-            </div>
-<!-- TABLE -->
-            <div class="mdl-grid" id="content-display">
-                <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-                  <thead>
-                    <tr>
-                      <th class="mdl-data-table__cell--non-numeric">Material</th>
-                      <th>Quantity</th>
-                      <th>Unit price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-                      <td>25</td>
-                      <td>$2.90</td>
-                    </tr>
-                    <tr>
-                      <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-                      <td>50</td>
-                      <td>$1.25</td>
-                    </tr>
-                    <tr>
-                      <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                      <td>10</td>
-                      <td>$2.35</td>
-                    </tr>
-                  </tbody>
-                </table>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </main>
 <!-- FOOTER -->
   <footer class="mdl-mini-footer">
     <div class="mdl-mini-footer__left-section">
@@ -251,6 +37,5 @@
       </ul>
     </div>
   </footer>
-</div>
 </body>
 </html>

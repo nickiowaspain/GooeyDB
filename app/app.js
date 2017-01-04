@@ -1,0 +1,17 @@
+var app = angular
+.module('myApp', [
+  'ngRoute',
+  'HomeController'
+]);
+
+app.config(configFunction);
+
+function configFunction($routeProvider){
+
+  $routeProvider
+  .when('/', {
+    templateUrl: './partials/home.html',
+    controller: 'HomeController'
+  })
+
+};
