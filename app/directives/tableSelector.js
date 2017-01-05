@@ -58,6 +58,7 @@ angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
         // update row factory to have rows/records for selected table
         rowFactory.rows = table;
         console.log('after rowFactory', rowFactory.rows);
+        rowFactory.tableName = data.tableName;
       });
     };
   }])

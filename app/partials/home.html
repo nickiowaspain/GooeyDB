@@ -1,15 +1,26 @@
 <div ng-controller="HomeController"> 
-<table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-  <thead>
-    <tr>
-      <th ng-repeat='col in columnNames' style="text-align: left">{{col}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat='row in rows'>
-      <td ng-repeat='col in columnNames' style="text-align: left">{{row[col]}}</td>
-    </tr>
-  </tbody>
-</table>
-
+  <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+    <thead>
+      <tr>
+        <th ng-repeat='col in columnNames' style="text-align: left">{{col}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='row in rows'>
+        <td ng-repeat='col in columnNames' style="text-align: left">{{row[col]}}</td>
+      </tr>
+      <form>
+        <tr>
+          <td ng-repeat='col in columnNames' style="text-align: left">
+            <input ng-model="newRecord[col]" type="text" placeholder={{col}}>{{newRecord[col]}}</input>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button ng-click="addRecord()">Save Record</button>
+          </td>
+        </tr>
+      </form>
+    </tbody>
+  </table>
 </div>
