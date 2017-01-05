@@ -4,7 +4,7 @@ angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
     // watch for changes in datbaseFactory caused by change in dropdown menu for database selector
     $scope.$watch(function() {return databaseFactory.dbName}, function() {
       // only load tables if a database is selected
-      if (databaseFactory.dbName) {
+      if (databaseFactory.url) {
         // create database url string from databaseFactory being updated
         var url = 'postgres://' + databaseFactory.user +':' + databaseFactory.pass + '@' + databaseFactory.url + ':5432/' + databaseFactory.dbName;
 
@@ -57,6 +57,7 @@ angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
         console.log('before rowFactory', rowFactory.rows);
         rowFactory.rows = table;
         console.log('after rowFactory', rowFactory.rows);
+        rowFactory.tableName = data.tableName;
       });
     };
   }])

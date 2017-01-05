@@ -14,19 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'app')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
-// app.post('/getTables', function(req, res) {
-//   const data = req.body;
-//   const sequelize = new Sequelize(`postgres://${data.username}:${data.password}@${data.url}:5432/${data.dbname}`);
-
-//   sequelize
-//     .authenticate()
-//     .then(function(err) {
-      
-//     })
-//     .catch(function (err) {
-//       console.log('Unable to connect to the database:', err);
-//     });
-// });
+app.post('/addRecord', models.addRecord);
 
 app.post('/connect', function (req, res, done) {
   var data = req.body;

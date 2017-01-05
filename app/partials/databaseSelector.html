@@ -1,4 +1,10 @@
-<div ng-controller="selectCtrl" class="demo-card-event mdl-card mdl-shadow--2dp">
+<style>
+  #thingy {
+    height: 0px;
+  }
+</style>
+
+<div id="thingy" ng-controller="selectCtrl" class="demo-card-event mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title mdl-card--expand" ng-model="selectedTestAccount">
       <h5>
         Database: {{ active }}
