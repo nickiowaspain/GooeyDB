@@ -14,13 +14,16 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'app')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
-// app.get('/db', models.retrieve);
 
 app.post('/connect', function (req, res, done) {
   var data = req.body;
 
 //connect to elephant
   const sequelize = new Sequelize(`postgres://${data.username}:${data.password}@${data.url}:5432/${data.dbname}`);
+
+// //connect to local server
+//   const sequelize = new Sequelize(`postgres://${data.username}:${data.password}@${data.url}:5432/`);
+
   sequelize
     .authenticate()
     .then(function(err) {
@@ -31,8 +34,10 @@ app.post('/connect', function (req, res, done) {
     });
 });
 
+// get table names for specified database
 app.post('/getTables', models.retrieveTables);
 
+// get records for specified table
 app.post('/getTable', models.retrieveTable);
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
