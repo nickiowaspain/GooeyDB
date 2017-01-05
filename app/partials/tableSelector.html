@@ -1,3 +1,4 @@
+
 <style type="text/css">
   ul {
     padding: 0px;
@@ -7,14 +8,14 @@
     color: white;
     width: 225px;
     margin: 2px 0px;
-  }
 </style>
 
 <div ng-controller="tableSelector" class="demo-card-event mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand">
     <h4>Table Selector
       <ul>
-        <button ng-click="getTable(tableObj[table])" ng-repeat="table in tableObj" class="mdl-button mdl-js-button mdl-button--raised">{{tableObj[table]}}</button>
+        <button ng-click="getTable(tableObj[table])" ng-repeat="table in tableObj" type="submit" id="connectSubmit" class="mdl-button mdl-js-button mdl-button--raised">
+        {{tableObj[table]}}</button>
       </ul>
     </h4>
   </div>
