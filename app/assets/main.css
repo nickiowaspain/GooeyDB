@@ -22,12 +22,18 @@
 #connectSubmit {
   position: relative;
   bottom: 5px;
-  background-color: #009688;
+  background-color: #32ab9f;
+  color: #FFF; }
+
+#tableButton {
+  position: relative;
+  bottom: 5px;
+  margin-bottom: 15px;
+  background-color: #32ab9f;
   color: #FFF; }
 
 .demo-card-event.mdl-card {
   width: 256px;
-  height: 256px;
   background: #009688; }
 
 .demo-card-event > .mdl-card__actions {
@@ -143,11 +149,12 @@ fieldset {
   resize: none; }
 
 .form-group select {
+  min-width: 190px;
   width: 100%;
   font-size: 1rem;
   height: 1.6rem;
   padding: 0.125rem 0.125rem 0.0625rem;
-  background: #999;
+  background: rgba(0, 0, 0, 0.5);
   border: none;
   line-height: 1.6;
   box-shadow: none; }
