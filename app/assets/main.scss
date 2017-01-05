@@ -12,11 +12,15 @@ html {
 }
 
 body {
-
 }
 
 main {
 
+}
+
+.page-content {
+		margin-top: 80px;
+	  margin-bottom: 50px;
 }
 
 #container {
@@ -93,6 +97,34 @@ main {
 	margin-bottom: 15px;
 	background-color: #32ab9f;
 	color: #FFF;
+}
+
+#addRecord {
+	color: #000;
+}
+
+#addRecord:hover {
+	color: #009688;
+}
+
+#deleteRecord {
+	color: #000;
+}
+
+#deleteRecord:hover {
+	color: darkred;
+}
+
+#headerIcon {
+	position: relative;
+	left: 6px;
+	top: 5px;
+}
+
+#content-display {
+	z-index: 3;
+	max-height: 60vh;
+	overflow: scroll;
 }
 
 //MATERIAL STUFF

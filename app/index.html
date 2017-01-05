@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>GooeyDB</title>
   <link rel="stylesheet" href="assets/main.css">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-green.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <script type="text/javascript" src="angular/angular.min.js"></script>
-  <script type="text/javascript" src="angular-material/angular-material.min.js"></script>
-  <script type="text/javascript" src="angular-material/angular-material.min.css"></script>
   <script type="text/javascript" src="angular-route/angular-route.min.js"></script>
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-cookies.js"></script>
   <script type="text/javascript" src="./services/databaseFactory.js"></script>
@@ -104,7 +102,7 @@
 <!-- TABLE -->
             <div class="mdl-grid" id="content-display">
               <div class="mdl-cell mdl-cell--12-col ">
-                  <div ng-view></div>
+                  <div ng-view id="mainView"></div>
                 </div>
             </div>
           </div>
@@ -116,14 +114,8 @@
 
 
 <!-- FOOTER -->
-  <footer class="mdl-mini-footer">
-    <div class="mdl-mini-footer__left-section">
-      <div class="mdl-logo">Title</div>
-      <ul class="mdl-mini-footer__link-list">
-        <li><a href="#">Help</a></li>
-        <li><a href="#">Privacy & Terms</a></li>
-      </ul>
-    </div>
+  <footer class="mdl-mini-footer" style="position:fixed; left: 0px; bottom: 0px; width: 100%; height: 30px; padding: 5px 40% 5px;font-size:14px;">
+      <div style="width:100%;">GooeyDB by Jimmy Joe's(cott)</div>
   </footer>
 </body>
 </html>
