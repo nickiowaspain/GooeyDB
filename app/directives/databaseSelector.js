@@ -14,7 +14,10 @@ angular
       db: arr[4]
     }
   });
-  $selectedTestAccount = null;
+  $scope.selectedTestAccount = null;
+  $scope.$watch(function() { return databaseFactory.dbName }, function() {
+      $scope.selectedTestAccount = databaseFactory.dbName;
+  });
   $scope.active = '';
   $scope.activeConnectInfo = {};
   $scope.load = function() { 
@@ -27,7 +30,6 @@ angular
     databaseFactory.user = obj.user,
     databaseFactory.pass = obj.pass,
     databaseFactory.url = obj.url
-
   }
 }])
 .directive('databaseSelector', function() {
