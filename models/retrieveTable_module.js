@@ -26,7 +26,17 @@ module.exports = {
   retrieveTable: function(req, res) {
     // get the database url  and table name from the request body 
     const url = req.body.url;
-    const tableName = req.body.tableName;
+    let tableName = req.body.tableName;
+    const upperCaseFlag = function (tableName) {
+      for (let i = 0; i < tableName.length; i += 1) {
+        if (tableName[i] == tableName[i].toUpperCase()) {
+          return true;
+        }
+      }
+    }
+    if (upperCaseFlag) {
+      tableName = `"${tableName}"`;
+    }
     // connect to the above provided url
     pg.connect(url, (err, db) => {
       if (err) console.log(err);
