@@ -14,7 +14,7 @@ angular
       $scope.data.url = url;
       $scope.data.dbname = dbname;
 
-      $cookies.put('gooey:' + $scope.data.dbname, ':' + $scope.data.username + ':' + $scope.data.password + ':' + $scope.data.url + ':' + $scope.data.dbname);
+      $cookies.put('gooey:' + $scope.data.dbname, '%' + $scope.data.username + '%' + $scope.data.password + '%' + $scope.data.url + '%' + $scope.data.dbname);
       
       $http({
           url: 'http://localhost:3000/connect',
