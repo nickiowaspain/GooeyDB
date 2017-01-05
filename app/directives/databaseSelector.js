@@ -15,8 +15,10 @@ angular
     }
   });
   $scope.selectedTestAccount = null;
-  $scope.$watch(function() { return databaseFactory.dbName }, function() {
-      $scope.selectedTestAccount = databaseFactory.dbName;
+  $scope.$watch(function () { return databaseFactory.dbName }, function () {
+    console.log(databaseFactory.dbName)
+    $scope.selectedTestAccount = databaseFactory.dbName;
+      console.log($scope.selectedTestAccount)
   });
   $scope.active = '';
   $scope.activeConnectInfo = {};

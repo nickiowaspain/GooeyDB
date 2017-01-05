@@ -4,7 +4,7 @@
         Database: {{ active }}
         <div class="form-group" style="position: relative; top:15px">
           <select id="drop-down" ng-model="selectedTestAccount" ng-options="item for item in dbs" ng-change="load()">
-            <option value="">Select</option>
+            <option value="selectedTestAccount">{{selectedTestAccount}}</option>
           </select>
 
       </h5>
