@@ -4,7 +4,7 @@
 
 function dataBaseFactory() {
 	return {
-		dbName: '',
+		dbName : '',
     user: '',
     password: '',
     url: ''

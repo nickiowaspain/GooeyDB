@@ -1,12 +1,14 @@
-angular.module('TableSelector', ['databaseFactory'])
-  .controller('tableSelector', ['$scope', '$http', 'databaseFactory', function($scope, $http, databaseFactory) {
+angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
+  .controller('tableSelector', ['$scope', '$http', 'databaseFactory', 'rowFactory', function($scope, $http, databaseFactory, rowFactory) {
     
+    // watch for changes in datbaseFactory caused by change in dropdown menu for database selector
     $scope.$watch(function() {return databaseFactory.dbName}, function() {
-
+      // only load tables if a database is selected
       if (databaseFactory.dbName) {
         // create database url string from databaseFactory being updated
         var url = 'postgres://' + databaseFactory.user +':' + databaseFactory.pass + '@' + databaseFactory.url + ':5432/' + databaseFactory.dbName;
 
+        // create data for request body
         var data = {
           dbName: databaseFactory.dbName, 
           url : url
@@ -19,7 +21,9 @@ angular.module('TableSelector', ['databaseFactory'])
             var prop = tables[i].slice(7);
             cleanedTables[prop] = prop;
           }
-          console.log('response:', cleanedTables);
+          // console.log('response:', cleanedTables);
+
+          // update tableObj with table names
           $scope.tableObj = cleanedTables;
         });
       }
@@ -34,20 +38,25 @@ angular.module('TableSelector', ['databaseFactory'])
       // watch for change in databaseFactory to update list of tables in selected database
 
       // get database url
-      $scope.url = 'postgres://aeqxadhz:qHz6IxCJsV2GXmiQRzEPTU_wj4WufZQh@elmer.db.elephantsql.com:5432/aeqxadhz';
+      // $scope.url = 'postgres://aeqxadhz:qHz6IxCJsV2GXmiQRzEPTU_wj4WufZQh@elmer.db.elephantsql.com:5432/aeqxadhz';
       
+      var url = 'postgres://' + databaseFactory.user +':' + databaseFactory.pass + '@' + databaseFactory.url + ':5432/' + databaseFactory.dbName;
+
       // get the name of the table that was clicked on
       $scope.tableName = tName;
 
       // put database url and tablename into an object for the POST request
       var data = {
-        url: $scope.url,
+        url: url,
         tableName: $scope.tableName
       };
 
       $http.post('/getTable', data).then(function(res) {
         var table = res.data;
-        console.log('response:', table);
+        // console.log('response:', table);
+        console.log('before rowFactory', rowFactory.rows);
+        rowFactory.rows = table;
+        console.log('after rowFactory', rowFactory.rows);
       });
     };
   }])
