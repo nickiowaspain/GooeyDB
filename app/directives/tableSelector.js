@@ -14,32 +14,29 @@ angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
           url : url
         }
         
+        // send post request to server, request body includes the database url and database name
         $http.post('/getTables', data).then(function(res) {
+
+          // on success, clean up the table names received from server
           var tables = res.data;
+          console.log('response:', tables);
           var cleanedTables = {};
           for (var i = 0; i < tables.length; i += 1) {
             var prop = tables[i].slice(7);
             cleanedTables[prop] = prop;
           }
           // console.log('response:', cleanedTables);
-
           // update tableObj with table names
           $scope.tableObj = cleanedTables;
         });
       }
     });
 
-    // example tableObj
-    $scope.tableObj = {
-    };
+    // two way data binding allows the partial to dynaically display table names for selected database
+    $scope.tableObj = {};
 
-    // GET request for table triggered by click
     $scope.getTable = function(tName) {
-      // watch for change in databaseFactory to update list of tables in selected database
-
-      // get database url
-      // $scope.url = 'postgres://aeqxadhz:qHz6IxCJsV2GXmiQRzEPTU_wj4WufZQh@elmer.db.elephantsql.com:5432/aeqxadhz';
-      
+      // create database url string from databaseFactory 
       var url = 'postgres://' + databaseFactory.user +':' + databaseFactory.pass + '@' + databaseFactory.url + ':5432/' + databaseFactory.dbName;
 
       // get the name of the table that was clicked on
@@ -47,14 +44,18 @@ angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
 
       // put database url and tablename into an object for the POST request
       var data = {
+        url: $scope.url,
         url: url,
         tableName: $scope.tableName
       };
 
+      // send post request to server, request body includes the database url and table name
       $http.post('/getTable', data).then(function(res) {
+        // table is an array of objects, each object is a record/row in the table, keys being col names and values being values
         var table = res.data;
         // console.log('response:', table);
         console.log('before rowFactory', rowFactory.rows);
+        // update row factory to have rows/records for selected table
         rowFactory.rows = table;
         console.log('after rowFactory', rowFactory.rows);
         rowFactory.tableName = data.tableName;

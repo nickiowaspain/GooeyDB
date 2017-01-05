@@ -15,8 +15,10 @@ angular
     }
   });
   $scope.selectedTestAccount = null;
-  $scope.$watch(function() { return databaseFactory.dbName }, function() {
-      $scope.selectedTestAccount = databaseFactory.dbName;
+  $scope.$watch(function () { return databaseFactory.dbName }, function () {
+    console.log(databaseFactory.dbName)
+    $scope.selectedTestAccount = databaseFactory.dbName;
+      console.log($scope.selectedTestAccount)
   });
   $scope.active = '';
   $scope.activeConnectInfo = {};
@@ -25,11 +27,14 @@ angular
     var obj = $scope.databaseObjects.filter(function(obj) {
       return obj.db === $scope.active;
     })[0];
-
     databaseFactory.dbName = obj.db,
     databaseFactory.user = obj.user,
     databaseFactory.pass = obj.pass,
     databaseFactory.url = obj.url
+    // console.log(databaseFactory.dbName);
+    // console.log(databaseFactory.user);
+    // console.log(databaseFactory.pass);
+    // console.log(databaseFactory.url);
   }
 }])
 .directive('databaseSelector', function() {

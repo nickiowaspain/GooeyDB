@@ -7,4 +7,4 @@ module.exports = {
   retrieveTable: retrieveTable.retrieveTable,
   addRecord: add_record.addRecord,
   // dbConnect: dbConnect.dbConnect
-};
+}
