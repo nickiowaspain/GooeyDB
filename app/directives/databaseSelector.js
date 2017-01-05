@@ -27,7 +27,6 @@ angular
     var obj = $scope.databaseObjects.filter(function(obj) {
       return obj.db === $scope.active;
     })[0];
-
     databaseFactory.dbName = obj.db,
     databaseFactory.user = obj.user,
     databaseFactory.pass = obj.pass,
