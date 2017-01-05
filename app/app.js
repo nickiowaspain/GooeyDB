@@ -2,7 +2,7 @@ var app = angular
 .module('myApp', [
   'ngRoute',
   'HomeController',
-  'MenuBar',
+  'DbConnect',
   'DatabaseSelector',
   'Breadcrumbs',
   'ActionBar',
