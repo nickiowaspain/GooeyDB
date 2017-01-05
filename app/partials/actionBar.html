@@ -7,21 +7,16 @@
                   <nav class="mdl-navigation mdl-layout--large-screen-only">
                     <a class="mdl-navigation__link" href=""><i class="material-icons">add</i></a>
                     <a class="mdl-navigation__link" href=""><i class="material-icons">delete</i></a>
-                    <span class="mdl-navigation__link">
                       <div class="form-group">
-                        <input type="text" id="dbname">
-                          <label class="control-label" for="dbname">Search</label>
+                        <input type="text" id="search" name="search">
+                          <label class="control-label" for="search">Search</label>
                         </input>
                         <i class="bar"></i>
                       </div>
-                    </span>
-                    <span class="mdl-navigation__link">
                       <div class="form-group">
-                        <input type="text" id="dbname">
-                          <label class="control-label" for="dbname">Filter</label>
-                        </input>
+                          <select class="form-control" ng-model="selectedCol" ng-options="columns.name for column in $scope.columns">
+                          </select>
                         <i class="bar"></i>
                       </div>
-                    </span>
                  </nav>
                 </div>

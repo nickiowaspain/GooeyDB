@@ -19,6 +19,12 @@
     height: 50px;
     background-color: magenta; }
 
+#connectSubmit {
+  position: relative;
+  bottom: 5px;
+  background-color: #009688;
+  color: #FFF; }
+
 .demo-card-event.mdl-card {
   width: 256px;
   height: 256px;
@@ -105,8 +111,8 @@ fieldset {
 .form-radio,
 .form-group {
   position: relative;
-  margin-top: 2.25rem;
-  margin-bottom: 2.25rem; }
+  top: 4px;
+  padding: 0px 10px 0px 10px; }
 
 .form-inline > .form-group,
 .form-inline > .btn {
@@ -150,7 +156,7 @@ fieldset {
   position: absolute;
   top: 0.25rem;
   pointer-events: none;
-  padding-left: 0.125rem;
+  padding: 0px 10px 0px 10px;
   z-index: 1;
   color: white;
   font-size: 1rem;

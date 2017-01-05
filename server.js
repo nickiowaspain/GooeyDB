@@ -18,7 +18,8 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.post('/connect', function (req, res, done) {
   var data = req.body;
-  console.log(data.url)
+
+//connect to elephant
   const sequelize = new Sequelize(`postgres://${data.username}:${data.password}@${data.url}:5432/${data.dbname}`);
   sequelize
     .authenticate()
@@ -29,6 +30,8 @@ app.post('/connect', function (req, res, done) {
       console.log('Unable to connect to the database:', err);
     });
 });
+
+app.post('/getTables', models.retrieveTables);
 
 app.post('/getTable', models.retrieveTable);
 

@@ -5,23 +5,28 @@ angular.module('TableSelector', ['databaseFactory'])
 
       if (databaseFactory.dbName) {
         // create database url string from databaseFactory being updated
-        var url = 'postgres://' + databaseFactory.user +':' + databaseFactory.pass + '@' + databaseFactory.url + ':5432/' +databaseFactory.dbName;
+        var url = 'postgres://' + databaseFactory.user +':' + databaseFactory.pass + '@' + databaseFactory.url + ':5432/' + databaseFactory.dbName;
 
         var data = {
+          dbName: databaseFactory.dbName, 
           url : url
         }
         
         $http.post('/getTables', data).then(function(res) {
           var tables = res.data;
-          console.log('response:', tables);
+          var cleanedTables = {};
+          for (var i = 0; i < tables.length; i += 1) {
+            var prop = tables[i].slice(7);
+            cleanedTables[prop] = prop;
+          }
+          console.log('response:', cleanedTables);
+          $scope.tableObj = cleanedTables;
         });
       }
-    })
+    });
 
     // example tableObj
     $scope.tableObj = {
-      students : 'students',
-      tutors : 'tutors'
     };
 
     // GET request for table triggered by click
