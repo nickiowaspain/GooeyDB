@@ -4,6 +4,7 @@
 
 function rowFactory() {
   return {
+    tableName: '',
     rows: []
   }
 }

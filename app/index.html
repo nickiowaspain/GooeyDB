@@ -23,6 +23,17 @@
   <script type="text/javascript" src="./directives/tableSelector.js"></script>
   <script type="text/javascript" src="./app.js"></script>
 </head>
+<style>
+  #left-panel {
+    margin: 0;
+    padding: 0;
+    max-width: 260px;
+  }
+  .mdl-grid {
+    margin: 0;
+    padding: 0;
+  }
+</style>
 <body ng-app="myApp">
 <!-- MATERIAL DESIGN LITE INDEX
   DOCUMENTATION: https://getmdl.io/components/index.html
@@ -35,6 +46,7 @@
   FORMS ARE TAKEN FROM HERE:
   http://codepen.io/jonnitto/pen/OVmvPB
  -->
+ <main class="mdl-layout">
 <db-connect></db-connect>
 
 <!-- POTENTIAL SLIDE OUT DRAWER -->
@@ -51,7 +63,7 @@
 
 <!-- CONTENT -->
   
-    <main class="mdl-layout">
+    
       <div class="page-content">
         <div class="mdl-grid" id="app">
 <!-- LEFT PANEL -->

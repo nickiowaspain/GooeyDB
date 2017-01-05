@@ -9,11 +9,12 @@ const Sequelize = require('sequelize');
 const app = express();
 const PORT = 3000;
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'app')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
+app.post('/addRecord', models.addRecord);
 
 app.post('/connect', function (req, res, done) {
   var data = req.body;
