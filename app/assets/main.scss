@@ -80,6 +80,12 @@ main {
   }
 }
 
+#connectSubmit {
+	position: relative;
+	bottom: 5px;
+	background-color: #009688;
+	color: #FFF;
+}
 
 //MATERIAL STUFF
 .demo-card-event.mdl-card {
@@ -216,8 +222,8 @@ fieldset {
 .form-radio,
 .form-group {
 	position: relative;
-	margin-top: ($mf-gap * 1.5);
-	margin-bottom: ($mf-gap * 1.5);
+	top: 4px;
+	padding: 0px 10px 0px 10px;
 }
 
 .form-inline {
@@ -267,7 +273,7 @@ fieldset {
 		font-size: $mf-font-size;
 		height: ($mf-font-size * 1.6);
 		padding: $mf-spacer $mf-spacer ($mf-spacer / 2);
-		background: none;
+		background: #999;
 		border: none;
 		line-height: 1.6;
 		box-shadow: none;
@@ -277,7 +283,7 @@ fieldset {
 		position: absolute;
 		top: ($mf-font-size / 4);
 		pointer-events: none;
-		padding-left: $mf-spacer;
+   	padding: 0px 10px 0px 10px;
 		z-index: 1;
 		color: $mf-label-color;
 		font-size: $mf-font-size;

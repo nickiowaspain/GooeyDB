@@ -1,12 +1,11 @@
- angular
+angular
   .module('databaseFactory', [])
-  .factory('databaseFactory', dataBaseFactory); 
+  .factory('databaseFactory', function () {
+    return {
+      dbName: 'Database',
+      user: '',
+      password: '',
+      url: ''
+    }
+  });
 
-function dataBaseFactory() {
-	return {
-		dbName: '',
-    user: '',
-    password: '',
-    url: ''
-	}
-}

@@ -2,17 +2,11 @@
     <div class="mdl-card__title mdl-card--expand" ng-model="selectedTestAccount">
       <h5>
         Database: {{ active }}
-        <div class="form-group">
-          <select id="drop-down" ng-model="selectedTestAccount" ng-options="item for item in dbs">
-            <option value="">Select</option>
+        <div class="form-group" style="position: relative; top:15px">
+          <select id="drop-down" ng-model="selectedTestAccount" ng-options="item for item in dbs" ng-change="load()">
+            <option value="selectedTestAccount">{{selectedTestAccount}}</option>
           </select>
-          <label class="control-label" for="select">Select Database:</label><i class="bar"></i>
-          <div class="mdl-card__actions mdl-card--border" ng-click="load()">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-              Load
-            </a>
-          <div class="mdl-layout-spacer"></div>
-          </div>
+
       </h5>
     </div>
     <div class="mdl-card__actions mdl-card--border">

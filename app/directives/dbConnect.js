@@ -1,6 +1,6 @@
 angular
-  .module('DbConnect', ['ngCookies'])
-  .controller('dbConnectController', ['$scope', '$http', '$cookies', function ($scope, $http, $cookies) {
+  .module('DbConnect', ['ngCookies', 'databaseFactory'])
+  .controller('dbConnectController', ['$scope', '$http', '$cookies', 'databaseFactory', function ($scope, $http, $cookies, databaseFactory) {
     $scope.data = {
       username: 'aeqxadhz',
       password: 'qHz6IxCJsV2GXmiQRzEPTU_wj4WufZQh',
@@ -13,7 +13,7 @@ angular
       $scope.data.password = password;
       $scope.data.url = url;
       $scope.data.dbname = dbname;
-
+      databaseFactory.dbName = dbname;
       $cookies.put('gooey:' + $scope.data.dbname, '%' + $scope.data.username + '%' + $scope.data.password + '%' + $scope.data.url + '%' + $scope.data.dbname);
       
       $http({

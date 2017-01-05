@@ -1,1 +1,15 @@
-<div>TABLE HERE. Variable from homecontroller scope {{name}}</div>
+<div ng-controller="HomeController"> 
+<table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th ng-repeat='col in columnNames' style="text-align: left">{{col}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='row in rows'>
+      <td ng-repeat='col in columnNames' style="text-align: left">{{row[col]}}</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

@@ -14,13 +14,18 @@ angular
       db: arr[4]
     }
   });
-  $selectedTestAccount = null;
+  $scope.selectedTestAccount = null;
+  $scope.$watch(function () { return databaseFactory.dbName }, function () {
+    console.log(databaseFactory.dbName)
+    $scope.selectedTestAccount = databaseFactory.dbName;
+      console.log($scope.selectedTestAccount)
+  });
   $scope.active = '';
   $scope.activeConnectInfo = {};
   $scope.load = function() { 
     $scope.active = document.getElementById('drop-down').value.slice(7);
     var obj = $scope.databaseObjects.filter(function(obj) {
-      return obj.user === $scope.active;
+      return obj.db === $scope.active;
     })[0];
     databaseFactory.dbName = obj.db,
     databaseFactory.user = obj.user,
@@ -30,7 +35,6 @@ angular
     // console.log(databaseFactory.user);
     // console.log(databaseFactory.pass);
     // console.log(databaseFactory.url);
-
   }
 }])
 .directive('databaseSelector', function() {

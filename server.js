@@ -15,7 +15,6 @@ app.use(express.static(path.join(__dirname, 'app')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
 
-
 app.post('/connect', function (req, res, done) {
   var data = req.body;
 
@@ -38,5 +37,9 @@ app.post('/connect', function (req, res, done) {
 app.post('/getTable', (req, res) => {
   models.retrieveTable(req, res);
 });
+
+app.post('/getTables', models.retrieveTables);
+
+app.post('/getTable', models.retrieveTable);
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
