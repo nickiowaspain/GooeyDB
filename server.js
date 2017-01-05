@@ -19,8 +19,6 @@ app.post('/connect', function (req, res, done) {
 
 //connect to elephant
   const sequelize = new Sequelize(`postgres://${data.username}:${data.password}@${data.url}:5432/${data.dbname}`);
-// //connect to local server
-//   const sequelize = new Sequelize(`postgres://${data.username}:${data.password}@${data.url}:5432/`);
 
   sequelize
     .authenticate()
