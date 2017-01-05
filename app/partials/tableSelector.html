@@ -1,9 +1,23 @@
+<style>
+  ul {
+    margin: 20px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+  }
+  .mdl-button {
+    margin: 5px 0px;
+    display: block;
+    width: 100%;
+  }
+</style>
+
 <div ng-controller="tableSelector" class="demo-card-event mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand">
     <h4>Table Selector
       <ul>
-        <li ng-click="getTable(tableObj[table])" ng-repeat="table in tableObj">{{tableObj[table]}}
-        </li>
+        <button ng-click="getTable(tableObj[table])" ng-repeat="table in tableObj" type="submit" id="connectSubmit" class="mdl-button mdl-js-button mdl-button--raised">
+        {{tableObj[table]}}</button>
       </ul>
     </h4>
   </div>

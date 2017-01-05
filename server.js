@@ -31,8 +31,10 @@ app.post('/connect', function (req, res, done) {
     });
 });
 
+// get table names for specified database
 app.post('/getTables', models.retrieveTables);
 
+// get records for specified table
 app.post('/getTable', models.retrieveTable);
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
