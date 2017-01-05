@@ -25,7 +25,7 @@ angular
   $scope.load = function() { 
     $scope.active = document.getElementById('drop-down').value.slice(7);
     var obj = $scope.databaseObjects.filter(function(obj) {
-      return obj.user === $scope.active;
+      return obj.db === $scope.active;
     })[0];
 
     databaseFactory.dbName = obj.db,
