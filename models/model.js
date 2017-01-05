@@ -5,4 +5,4 @@ module.exports = {
   retrieveTables: retrieveTable.retrieveTables,
   retrieveTable: retrieveTable.retrieveTable
   // dbConnect: dbConnect.dbConnect
-};
+}

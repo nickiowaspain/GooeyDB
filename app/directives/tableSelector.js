@@ -19,13 +19,13 @@ angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
 
           // on success, clean up the table names received from server
           var tables = res.data;
+          console.log('response:', tables);
           var cleanedTables = {};
           for (var i = 0; i < tables.length; i += 1) {
             var prop = tables[i].slice(7);
             cleanedTables[prop] = prop;
           }
           // console.log('response:', cleanedTables);
-
           // update tableObj with table names
           $scope.tableObj = cleanedTables;
         });
@@ -33,8 +33,7 @@ angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
     });
 
     // two way data binding allows the partial to dynaically display table names for selected database
-    $scope.tableObj = {
-    };
+    $scope.tableObj = {};
 
     $scope.getTable = function(tName) {
       // create database url string from databaseFactory 
@@ -45,6 +44,7 @@ angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
 
       // put database url and tablename into an object for the POST request
       var data = {
+        url: $scope.url,
         url: url,
         tableName: $scope.tableName
       };

@@ -14,13 +14,16 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'app')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
-// app.get('/db', models.retrieve);
 
 app.post('/connect', function (req, res, done) {
   var data = req.body;
 
 //connect to elephant
   const sequelize = new Sequelize(`postgres://${data.username}:${data.password}@${data.url}:5432/${data.dbname}`);
+
+// //connect to local server
+//   const sequelize = new Sequelize(`postgres://${data.username}:${data.password}@${data.url}:5432/`);
+
   sequelize
     .authenticate()
     .then(function(err) {

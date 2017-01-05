@@ -31,6 +31,10 @@ angular
     databaseFactory.user = obj.user,
     databaseFactory.pass = obj.pass,
     databaseFactory.url = obj.url
+    // console.log(databaseFactory.dbName);
+    // console.log(databaseFactory.user);
+    // console.log(databaseFactory.pass);
+    // console.log(databaseFactory.url);
   }
 }])
 .directive('databaseSelector', function() {
