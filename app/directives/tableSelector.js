@@ -1,19 +1,22 @@
-angular.module('TableSelector', [])
-  .controller('tableSelector', ['$scope', '$http', function($scope, $http) {
-    // example tableObj
-    $scope.tableObj = {
-      table1 : 'table1',
-      table2 : 'table2', 
-      table3 : 'table3'
-    };
+angular.module('TableSelector', ['databaseFactory'])
+  .controller('tableSelector', ['$scope', '$http', 'databaseFactory', function($scope, $http, databaseFactory) {
 
     // GET request for table triggered by click
     $scope.getTable = function(tName) {
+      // get database url
+      $scope.url = 'postgres://aeqxadhz:qHz6IxCJsV2GXmiQRzEPTU_wj4WufZQh@elmer.db.elephantsql.com:5432/aeqxadhz';
+      
+      // get the name of the table that was clicked on
       $scope.tableName = tName;
-      console.log('clicking on', $scope.tableName);
-      var url = '/table/' + $scope.tableName;
-      $http.get(url).then(function(data) {
-        var table = data;
+
+      // put database url and tablename into an object for the POST request
+      data = {
+        url: $scope.url,
+        tableName: $scope.tableName
+      };
+
+      $http.post('/getTable', data).then(function(res) {
+        var table = res.data;
         console.log('response:', table);
       });
     };
