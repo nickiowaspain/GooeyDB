@@ -9,14 +9,18 @@
       <tr ng-repeat='row in rows'>
         <td ng-repeat='col in columnNames' style="text-align: left">{{row[col]}}</td>
       </tr>
-      <tr>
-        <td ng-repeat='col in columnNames' style="text-align: left"><input ng-model="record[col]" type="text" placeholder="col"></input></td>
-      </tr>
+      <form>
+        <tr>
+          <td ng-repeat='col in columnNames' style="text-align: left">
+            <input ng-model="newRecord[col]" type="text" placeholder={{col}}>{{newRecord[col]}}</input>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button ng-click="addRecord()">Save Record</button>
+          </td>
+        </tr>
+      </form>
     </tbody>
-    <tr>
-      <td>
-        <button ng-click="addRecord()">PRESS ME!</button>
-      </td>
-    </tr>
   </table>
 </div>

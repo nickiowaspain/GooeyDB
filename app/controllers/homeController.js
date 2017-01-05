@@ -20,26 +20,27 @@ function HomeController($scope, rowFactory) {
   // JIMMY
   $scope.newRecord = {}
   $scope.addRecord = function() {
+    var obj = $scope.newRecord;
+    console.log('OBJ', obj);
     $scope.numberOfCols = $scope.columnNames.length;
     $scope.columnNames.forEach(function(column) {
-      $scope.newRecord[column] = null;
+      $scope.newRecord[column] = '';
     });
     console.log($scope.columnNames);
     console.log($scope.numberOfCols);
-    console.log($scope.one, $scope.two, $scope.three);
-    console.log($scope.newRecord);
-    console.log('ROWFACTORY', rowFactory);
-    const data = {
-      tableName: rowFactory.tableName,
-      columnNames: $scope.columnNames,
-      values: $scope.newRecord
-    }
-    $http.post('/addRecord', data).then(function(res) {
-      var thing = res.data;
-      console.log('before', recordFactory.rows);
-      recordFactory.data = thing;
-      console.log('after', recordFactory.rows);
-      recordFactory.data = data;
-    });
+    console.log('HEY', obj);
+
+    // const data = {
+    //   tableName: rowFactory.tableName,
+    //   columnNames: $scope.columnNames,
+    //   values: $scope.newRecord
+    // }
+    // $http.post('/addRecord', data).then(function(res) {
+    //   var thing = res.data;
+    //   console.log('before', recordFactory.rows);
+    //   recordFactory.data = thing;
+    //   console.log('after', recordFactory.rows);
+    //   recordFactory.data = data;
+    // });
   }
 }
