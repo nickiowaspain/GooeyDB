@@ -1,7 +1,7 @@
 angular
   .module('ActionBar', ['rowFactory', 'sortFactory'])
   .controller('ActionBar', ['$scope', 'rowFactory', 'sortFactory', function ($scope, rowFactory, sortFactory) {
-    // column selector
+    // drop down menu that grabs columns by watching rowFactory. gets column names by doing object.keys for the first record.
     $scope.currentCol = null;
     $scope.rows = rowFactory.rows;
     $scope.columnNames = [];
@@ -14,7 +14,7 @@ angular
       }
     });
 
-    // sort selector
+    // drop down menu for sorting by ascending or descending. when selecting an option for sort direction or column name sortselect() grabs variables from scope and saves to sortfactory
     $scope.currentSort = null;
     $scope.sortNames = ['Ascending', 'Descending'];
     $scope.sortSelect = function() {
@@ -23,7 +23,7 @@ angular
       sortFactory.sort = $scope.currentSort;
     }
 
-    // search functionality
+    // search functionality (filter) that saves search term to sortFactory
     $scope.searchTerm = '',
     $scope.search = function() {
       // console.log($scope.searchTerm);

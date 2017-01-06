@@ -7,12 +7,16 @@
 <div id="breadcrumbs" class="mdl-layout__header-row mdl-layout__header" ng-controller="BreadCrumbs">
     <span class="mdl-layout-title">Crumbs</span>
     <nav class="mdl-navigation">
+      <!--grabs selected database name from databasefactory-->
       <a class="mdl-navigation__link" href="">{{dbname}}</a>
       <a class="mdl-navigation__link" href=""><i class="material-icons">input</i></a>
-      <a class="mdl-navigation__link" href="">TableName</a>
+      <!--grabs selected table name from databasefactory-->
+      <a class="mdl-navigation__link" href="">{{tablename}}</a>
       <a class="mdl-navigation__link" href=""><i class="material-icons">input</i></a>
+      <!--when update is implemented should grab highlighted row's id-->
       <a class="mdl-navigation__link" href="">RowID</a>
       <a class="mdl-navigation__link" href=""><i class="material-icons">input</i></a>
+      <!--when update is implemented should grab highlighted column's name-->
       <a class="mdl-navigation__link" href="">ColumnName</a>
     </nav>
   </div>
