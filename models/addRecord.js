@@ -9,16 +9,16 @@ module.exports = {
 
     Object.keys(req.body.data).forEach(function(key, i) {
       if (i === len - 1) {
-        keys += `\"${key.toString()}\"`;
+        keys += `${key.toString()}`;
       } else {
-        keys += `\"${key.toString()}\", `;
+        keys += `${key.toString()}, `;
       }
     });
 
     Object.keys(req.body.data).forEach(function(key, i) {
 
       if(!parseInt(req.body.data[key])) {
-        req.body.data[key] = `\"${req.body.data[key]}\"`;
+        req.body.data[key] = `\'${req.body.data[key]}'`;
       }
       if (i === len - 1) {
         values += `${req.body.data[key]}`;
