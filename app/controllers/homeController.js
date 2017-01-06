@@ -15,7 +15,13 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
     if (oldVal) {
       console.log('No change')
     }
-  })
+  });
+
+  $scope.searchTerm = null;
+  $scope.$watch(function () { return sortFactory.search }, function (oldVal, newVal) {
+    // console.log('seraching:', $scope.searchTerm);
+    $scope.searchTerm = sortFactory.search;
+  });
 
   $scope.colSortName = null;
   $scope.sortName = null;
