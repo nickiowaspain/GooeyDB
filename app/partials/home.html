@@ -16,7 +16,7 @@
             </div>
           </td>
           <td ng-repeat='col in columnNames' style="text-align: left">
-            <input ng-model="newRecord[col]" type="text" placeholder={{col}}>{{newRecord[col]}}</input>
+            <input ng-model="newRecord.data[col]" type="text" placeholder={{col}}></input>
           </td>
         </tr>
       </form>

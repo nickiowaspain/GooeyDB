@@ -1,10 +1,10 @@
 const retrieveTable = require('./retrieveTable_module');
-const add_record = require('./add_record');
+const addRecord = require('./addRecord');
 
 module.exports = {
   // retrieve : retrieve.retrieve,
   retrieveTables: retrieveTable.retrieveTables,
   retrieveTable: retrieveTable.retrieveTable,
-  addRecord: add_record.addRecord,
+  addRecord: addRecord.addRecord,
   // dbConnect: dbConnect.dbConnect
 }
