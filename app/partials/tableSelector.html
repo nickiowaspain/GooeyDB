@@ -9,22 +9,28 @@
     width: 225px;
     margin: 2px 0px;
   }
+
+  #tableSelector {
+    max-height: 50vh;
+    overflow-y: unset;
+  }
 </style>
 
-<div ng-controller="tableSelector" class="demo-card-event mdl-card mdl-shadow--2dp">
+<div ng-controller="tableSelector" class="demo-card-event mdl-card mdl-shadow--2dp" id="tableSelector">
   <div class="mdl-card__title mdl-card--expand">
-    <h4>Table Selector
+    <h5>Table Selector:
       <ul>
         <button ng-click="getTable(tableObj[table])" ng-repeat="table in tableObj" type="submit" id="tableButton" class="mdl-button mdl-js-button mdl-button--raised">
         {{tableObj[table]}}</button>
       </ul>
-    </h4>
+    </h5>
   </div>
+  <!--Uncomment below when create table functionality is created 
   <div class="mdl-card__actions mdl-card--border">
     <a ng-model="tableName" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
       Create New Table
     </a>
     <div class="mdl-layout-spacer"></div>
-    <!--<i class="material-icons">database</i>-->
-  </div>
+    <i class="material-icons">database</i>
+  </div>-->
 </div>

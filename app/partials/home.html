@@ -2,25 +2,37 @@
   <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
     <thead>
       <tr>
-        <th ng-repeat='col in columnNames' style="text-align: left">{{col}}</th>
+        <td><i class="material-icons" id="headerIcon">dns</i></td>
+        <th ng-repeat='col in columnNames' style="text-align: left; font-size: 14px">{{col}}</th>
       </tr>
     </thead>
     <tbody>
+
       <tr ng-repeat="row in rows | orderBy:colSortName:sortName">
         <td ng-repeat='col in columnNames' style="text-align: left">{{row[col]}}</td>
       </tr>
       <form>
         <tr>
-          <td ng-repeat='col in columnNames' style="text-align: left">
-            <input ng-model="newRecord[col]" type="text" placeholder={{col}}>{{newRecord[col]}}</input>
-          </td>
-        </tr>
-        <tr>
           <td>
-            <button ng-click="addRecord()">Save Record</button>
+            <a href="" ng-click="addRecord()" id="addRecord"><i class="material-icons">add</i></a>
+            <div class="mdl-tooltip" data-mdl-for="addRecord">
+              Create new record
+            </div>
+          </td>
+          <td ng-repeat='col in columnNames' style="text-align: left">
+            <input ng-model="newRecord.data[col]" type="text" placeholder={{col}}></input>
           </td>
         </tr>
       </form>
+      <tr ng-repeat='row in rows'>
+        <td>
+          <a href="" id="deleteRecord"><i class="material-icons">delete</i></a>
+          <div class="mdl-tooltip" data-mdl-for="deleteRecord">
+            Delete this record (this can't be undone!)
+          </div>
+        </td>
+        <td ng-repeat='col in columnNames' style="text-align: left">{{row[col]}}</td>
+      </tr>
     </tbody>
   </table>
 </div>

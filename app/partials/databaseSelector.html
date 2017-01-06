@@ -1,24 +1,17 @@
 <style>
   #thingy {
-    height: 0px;
+    max-height: 100px;
   }
 </style>
 
-<div id="thingy" ng-controller="selectCtrl" class="demo-card-event mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__title mdl-card--expand" ng-model="selectedTestAccount">
+<div ng-controller="selectCtrl" class="demo-card-event mdl-card mdl-shadow--2dp" id="thingy">
+    <div class="mdl-card__title mdl-card--expand" ng-model="selectedTestAccount" id="thingy">
       <h5>
         Database: {{ active }}
         <div class="form-group" style="position: relative; top:15px">
           <select id="drop-down" ng-model="selectedTestAccount" ng-options="item for item in dbs" ng-change="load()">
             <option value="selectedTestAccount">{{selectedTestAccount}}</option>
           </select>
-
       </h5>
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-        Create New Database
-      </a>
-      <div class="mdl-layout-spacer"></div>
     </div>
   </div>

@@ -3,6 +3,10 @@ angular
   .controller('HomeController', ['$scope', 'rowFactory', 'sortFactory', HomeController]);
 
 function HomeController($scope, rowFactory, sortFactory) {
+  .module('HomeController', ['ngRoute', 'rowFactory', 'databaseFactory'])
+  .controller('HomeController', ['$scope', 'rowFactory', 'databaseFactory', '$http', HomeController]);
+
+function HomeController($scope, rowFactory, databaseFactory, $http) {
   // SCOT
   $scope.rows = rowFactory.rows;
   $scope.columnNames = [];
@@ -44,29 +48,19 @@ function HomeController($scope, rowFactory, sortFactory) {
   });
 
   // JIMMY
-  $scope.newRecord = {}
+  $scope.newRecord = {
+    data: {}
+  };
   $scope.addRecord = function() {
-    var obj = $scope.newRecord;
-    console.log('OBJ', obj);
-    $scope.numberOfCols = $scope.columnNames.length;
-    $scope.columnNames.forEach(function(column) {
-      $scope.newRecord[column] = '';
+    var body = $scope.newRecord;
+    body.tableName = rowFactory.tableName;
+    body.url = 'postgres://' + databaseFactory.user +':' + databaseFactory.pass + '@' + databaseFactory.url + ':5432/' + databaseFactory.dbName;
+    console.log(body);
+    $http.post('/addRecord', body).then(function(res) {
+      // var data = res.data;
+      // console.log('before', recordFactory.record);
+      // recordFactory.record = data;
+      // console.log('after', recordFactory.record);
     });
-    console.log($scope.columnNames);
-    console.log($scope.numberOfCols);
-    console.log('HEY', obj);
-
-    // const data = {
-    //   tableName: rowFactory.tableName,
-    //   columnNames: $scope.columnNames,
-    //   values: $scope.newRecord
-    // }
-    // $http.post('/addRecord', data).then(function(res) {
-    //   var thing = res.data;
-    //   console.log('before', recordFactory.rows);
-    //   recordFactory.data = thing;
-    //   console.log('after', recordFactory.rows);
-    //   recordFactory.data = data;
-    // });
   }
 }
