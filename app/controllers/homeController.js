@@ -1,8 +1,8 @@
 angular
   .module('HomeController', ['ngRoute', 'rowFactory', 'databaseFactory', 'sortFactory'])
-  .controller('HomeController', ['$scope', 'rowFactory', 'databaseFactory', 'sortFactory','$http', HomeController]);
+  .controller('HomeController', ['$scope', '$window', 'rowFactory', 'databaseFactory', 'sortFactory','$http', HomeController]);
 
-function HomeController($scope, rowFactory, databaseFactory, sortFactory, $http) {
+function HomeController($scope, $window, rowFactory, databaseFactory, sortFactory, $http) {
   // SCOT
   $scope.rows = rowFactory.rows;
   $scope.columnNames = [];
@@ -52,7 +52,8 @@ function HomeController($scope, rowFactory, databaseFactory, sortFactory, $http)
     body.tableName = rowFactory.tableName;
     body.url = 'postgres://' + databaseFactory.user +':' + databaseFactory.pass + '@' + databaseFactory.url + ':5432/' + databaseFactory.dbName;
     console.log(body);
-    $http.post('/addRecord', body).then(function(res) {
+    $http.post('/addRecord', body).then(function (res) {
+      // $window.location('/');
       // var data = res.data;
       // console.log('before', recordFactory.record);
       // recordFactory.record = data;

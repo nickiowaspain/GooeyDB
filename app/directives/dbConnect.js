@@ -1,11 +1,11 @@
 angular
   .module('DbConnect', ['ngCookies', 'databaseFactory'])
-  .controller('dbConnectController', ['$scope', '$http', '$cookies', 'databaseFactory', function ($scope, $http, $cookies, databaseFactory) {
+  .controller('dbConnectController', ['$scope', '$http', '$cookies', '$window', 'databaseFactory', function ($scope, $http, $cookies, $window, databaseFactory) {
     $scope.data = {
-      username: 'aeqxadhz',
-      password: 'qHz6IxCJsV2GXmiQRzEPTU_wj4WufZQh',
-      url: 'elmer.db.elephantsql.com',
-      dbname: 'aeqxadhz'
+      username: '',
+      password: '',
+      url: '',
+      dbname: ''
     };
 
     $scope.serverConnect = function (username, password, url, dbname) {
@@ -24,6 +24,7 @@ angular
           console.log(httpResponse)
       })
       console.log($scope.data);
+      $window.location.reload();
     }
 
   }])
