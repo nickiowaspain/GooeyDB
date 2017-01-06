@@ -1,18 +1,28 @@
 angular
-  .module('ActionBar', [])
-  .controller('ActionBar', ['$scope', function ($scope) {
-    $scope.columns = {
-      columns: [
-        {id: 1, name: 'Mirpur', dId: 1},
-        {id: 2, name: 'Uttra', dId: 1},
-        {id: 3, name: 'Shahabag', dId: 1},
-        {id: 4, name: 'Kotalipara', dId: 2},
-        {id: 5, name: 'Kashiani', dId: 2},
-        {id: 6, name: 'Moksedpur', dId: 2},
-        {id: 7, name: 'Vanga', dId: 3},
-        {id: 8, name: 'faridpur', dId: 3}
-      ]
-    };
+  .module('ActionBar', ['rowFactory', 'sortFactory'])
+  .controller('ActionBar', ['$scope', 'rowFactory', 'sortFactory', function ($scope, rowFactory, sortFactory) {
+    // column selector
+    $scope.currentCol = null;
+    $scope.rows = rowFactory.rows;
+    $scope.columnNames = [];
+    $scope.$watch(function() {return rowFactory.rows}, function(newVal, oldVal) {
+      // console.log('watching from actionBar');
+      if (rowFactory.rows) {
+        $scope.rows = rowFactory.rows;
+        $scope.columnNames = Object.keys($scope.rows[0]);
+        console.log('col names:', $scope.columnNames);
+      }
+    });
+
+    // sort selector
+    $scope.currentSort = null;
+    $scope.sortNames = ['Ascending', 'Descending'];
+    $scope.sortSelect = function() {
+      // console.log($scope.currentSort);
+      sortFactory.colName = $scope.currentCol;
+      sortFactory.sort = $scope.currentSort;
+    }
+
   }])
   .directive('actionBar', function() {
     return {

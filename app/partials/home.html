@@ -6,7 +6,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat='row in rows'>
+      <tr ng-repeat="row in rows | orderBy:colSortName:sortName">
         <td ng-repeat='col in columnNames' style="text-align: left">{{row[col]}}</td>
       </tr>
       <form>

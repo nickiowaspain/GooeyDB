@@ -1,8 +1,8 @@
 angular
-  .module('HomeController', ['ngRoute', 'rowFactory'])
-  .controller('HomeController', ['$scope', 'rowFactory', HomeController]);
+  .module('HomeController', ['ngRoute', 'rowFactory', 'sortFactory'])
+  .controller('HomeController', ['$scope', 'rowFactory', 'sortFactory', HomeController]);
 
-function HomeController($scope, rowFactory) {
+function HomeController($scope, rowFactory, sortFactory) {
   // SCOT
   $scope.rows = rowFactory.rows;
   $scope.columnNames = [];
@@ -15,7 +15,33 @@ function HomeController($scope, rowFactory) {
     if (oldVal) {
       console.log('No change')
     }
-  })
+  });
+
+  $scope.colSortName = null;
+  $scope.sortName = null;
+  $scope.$watch(function () { return sortFactory.colName }, function (oldVal, newVal) {
+    if (sortFactory.sort === 'Descending') {
+      console.log('Descending sort');
+      $scope.colSortName = sortFactory.colName;
+      $scope.sortName = true;
+    } else {
+      console.log('Ascending sort');
+      $scope.colSortName = sortFactory.colName;
+      $scope.sortName = false;
+    }
+  });
+
+  $scope.$watch(function () { return sortFactory.sort }, function (oldVal, newVal) {
+    if (sortFactory.sort === 'Descending') {
+      console.log('Descending sort');
+      $scope.colSortName = sortFactory.colName;
+      $scope.sortName = true;
+    } else {
+      console.log('Ascending sort');
+      $scope.colSortName = sortFactory.colName;
+      $scope.sortName = false;
+    }
+  });
 
   // JIMMY
   $scope.newRecord = {}
