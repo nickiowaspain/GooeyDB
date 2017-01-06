@@ -1,8 +1,8 @@
 angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
   .controller('tableSelector', ['$scope', '$http', 'databaseFactory', 'rowFactory', function($scope, $http, databaseFactory, rowFactory) {
     
-    // watch for changes in datbaseFactory caused by change in dropdown menu for database selector
-    $scope.$watch(function() {return databaseFactory.dbName}, function() {
+    // watch for changes in databaseFactory caused by change in dropdown menu for database selector
+    $scope.$watch(function() {return databaseFactory.dbName}, function(newVal, oldVal) {
       // only load tables if a database is selected
       if (databaseFactory.url) {
         // create database url string from databaseFactory being updated
@@ -54,10 +54,10 @@ angular.module('TableSelector', ['databaseFactory', 'rowFactory'])
         // table is an array of objects, each object is a record/row in the table, keys being col names and values being values
         var table = res.data;
         // console.log('response:', table);
-        console.log('before rowFactory', rowFactory.rows);
+        // console.log('before rowFactory', rowFactory.rows);
         // update row factory to have rows/records for selected table
         rowFactory.rows = table;
-        console.log('after rowFactory', rowFactory.rows);
+        // console.log('after rowFactory', rowFactory.rows);
         rowFactory.tableName = data.tableName;
       });
     };

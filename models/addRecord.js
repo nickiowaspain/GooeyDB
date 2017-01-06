@@ -9,9 +9,9 @@ module.exports = {
 
     Object.keys(req.body.data).forEach(function(key, i) {
       if (i === len - 1) {
-        keys += `\"${key.toString()}\"`;
+        keys += `${key.toString()}`;
       } else {
-        keys += `\"${key.toString()}\", `;
+        keys += `${key.toString()}, `;
       }
     });
 
