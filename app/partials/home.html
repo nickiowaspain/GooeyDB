@@ -23,7 +23,7 @@
 
       <tr ng-repeat='row in rows | orderBy:colSortName:sortName'>
         <td>
-          <a href="" id="deleteRecord"><i class="material-icons">delete</i></a>
+          <a href="" id="deleteRecord"><i class="material-icons" ng-click="deleteRecord()">delete</i></a>
           <div class="mdl-tooltip" data-mdl-for="deleteRecord">
             Delete this record (this can't be undone!)
           </div>
