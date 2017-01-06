@@ -1,8 +1,8 @@
 angular
-  .module('HomeController', ['ngRoute', 'rowFactory', 'sortFactory'])
-  .controller('HomeController', ['$scope', 'rowFactory', 'sortFactory', HomeController]);
+  .module('HomeController', ['ngRoute', 'rowFactory', 'databaseFactory', 'sortFactory'])
+  .controller('HomeController', ['$scope', 'rowFactory', 'databaseFactory', 'sortFactory','$http', HomeController]);
 
-function HomeController($scope, rowFactory, sortFactory) {
+function HomeController($scope, rowFactory, databaseFactory, sortFactory, $http) {
   // SCOT
   $scope.rows = rowFactory.rows;
   $scope.columnNames = [];
@@ -15,7 +15,7 @@ function HomeController($scope, rowFactory, sortFactory) {
     if (oldVal) {
       console.log('No change')
     }
-  });
+  })
 
   $scope.colSortName = null;
   $scope.sortName = null;
@@ -44,29 +44,19 @@ function HomeController($scope, rowFactory, sortFactory) {
   });
 
   // JIMMY
-  $scope.newRecord = {}
+  $scope.newRecord = {
+    data: {}
+  };
   $scope.addRecord = function() {
-    var obj = $scope.newRecord;
-    console.log('OBJ', obj);
-    $scope.numberOfCols = $scope.columnNames.length;
-    $scope.columnNames.forEach(function(column) {
-      $scope.newRecord[column] = '';
+    var body = $scope.newRecord;
+    body.tableName = rowFactory.tableName;
+    body.url = 'postgres://' + databaseFactory.user +':' + databaseFactory.pass + '@' + databaseFactory.url + ':5432/' + databaseFactory.dbName;
+    console.log(body);
+    $http.post('/addRecord', body).then(function(res) {
+      // var data = res.data;
+      // console.log('before', recordFactory.record);
+      // recordFactory.record = data;
+      // console.log('after', recordFactory.record);
     });
-    console.log($scope.columnNames);
-    console.log($scope.numberOfCols);
-    console.log('HEY', obj);
-
-    // const data = {
-    //   tableName: rowFactory.tableName,
-    //   columnNames: $scope.columnNames,
-    //   values: $scope.newRecord
-    // }
-    // $http.post('/addRecord', data).then(function(res) {
-    //   var thing = res.data;
-    //   console.log('before', recordFactory.rows);
-    //   recordFactory.data = thing;
-    //   console.log('after', recordFactory.rows);
-    //   recordFactory.data = data;
-    // });
   }
 }
