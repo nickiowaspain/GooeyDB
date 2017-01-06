@@ -1,5 +1,6 @@
 <div ng-controller="HomeController"> 
   <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+    <!--construct table headers with column names-->
     <thead>
       <tr>
         <td><i class="material-icons" id="headerIcon">dns</i></td>
@@ -7,6 +8,7 @@
       </tr>
     </thead>
     <tbody>
+      <!--create record row with inputs tied to column names-->
       <form>
         <tr>
           <td>
@@ -20,7 +22,8 @@
           </td>
         </tr>
       </form>
-
+      <!--display records with right columns. double ng-repeat. add filters-->
+      <!--delete not implemented-->
       <tr ng-repeat='row in rows | orderBy:colSortName:sortName | filter:searchTerm'>
         <td>
           <a href="" id="deleteRecord"><i class="material-icons">delete</i></a>

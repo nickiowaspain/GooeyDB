@@ -3,7 +3,7 @@ angular
   .controller('HomeController', ['$scope', '$window', 'rowFactory', 'databaseFactory', 'sortFactory','$http', HomeController]);
 
 function HomeController($scope, $window, rowFactory, databaseFactory, sortFactory, $http) {
-  // SCOT
+  // creates and watches changes rowfactory for changes to the database records and columns
   $scope.rows = rowFactory.rows;
   $scope.columnNames = [];
   $scope.$watch(function () { return rowFactory.rows }, function (oldVal, newVal) {
@@ -17,12 +17,13 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
     }
   });
 
+  //creates and watches changes to sortFactory for the search field filter
   $scope.searchTerm = null;
   $scope.$watch(function () { return sortFactory.search }, function (oldVal, newVal) {
-    // console.log('seraching:', $scope.searchTerm);
     $scope.searchTerm = sortFactory.search;
   });
 
+  //creates column and asc/desc vars and watches changes to sortFactory for the drop down column filter
   $scope.colSortName = null;
   $scope.sortName = null;
   $scope.$watch(function () { return sortFactory.colName }, function (oldVal, newVal) {
@@ -37,6 +38,7 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
     }
   });
 
+  //watches changes to sortFactory for the drop down asc/desc filter
   $scope.$watch(function () { return sortFactory.sort }, function (oldVal, newVal) {
     if (sortFactory.sort === 'Descending') {
       console.log('Descending sort');
@@ -49,7 +51,7 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
     }
   });
 
-  // JIMMY
+  // create new record functionality
   $scope.newRecord = {
     data: {}
   };
@@ -59,11 +61,7 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
     body.url = 'postgres://' + databaseFactory.user +':' + databaseFactory.pass + '@' + databaseFactory.url + ':5432/' + databaseFactory.dbName;
     console.log(body);
     $http.post('/addRecord', body).then(function (res) {
-      // $window.location('/');
-      // var data = res.data;
-      // console.log('before', recordFactory.record);
-      // recordFactory.record = data;
-      // console.log('after', recordFactory.record);
+
     });
   }
 }
