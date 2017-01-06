@@ -18,7 +18,13 @@ module.exports = {
     Object.keys(req.body.data).forEach(function(key, i) {
 
       if(!parseInt(req.body.data[key])) {
-        req.body.data[key] = `\"${req.body.data[key]}\"`;
+        req.body.data[key] = `\'${req.body.data[key]}\'`;
+      }
+      if(req.body.data[key] === 'true') {
+        req.body.data[key] = true;
+      }
+      if(req.body.data[key] === 'false') {
+        req.body.data[key] = false;
       }
       if (i === len - 1) {
         values += `${req.body.data[key]}`;
@@ -38,8 +44,8 @@ module.exports = {
     pg.connect(url, (err, db) => {
       if (err) console.log(err);
       console.log('SUCCESS!');
-      console.log(`INSERT INTO ${req.body.tableName} (${keys}) VALUES (${values});`);
-      db.query(`INSERT INTO ${req.body.tableName} (${keys}) VALUES (${values});`, (err, results, fields) => {
+      console.log(`INSERT INTO public.${req.body.tableName}(${keys}) VALUES (${values})`);
+      db.query(`INSERT INTO public.${req.body.tableName}(${keys}) VALUES (${values});`, (err, results, fields) => {
         if(err) console.log(err);
         console.log(results);
       });
