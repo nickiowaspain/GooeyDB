@@ -5,6 +5,7 @@
 function sortFactory() {
   return {
     colName: '',
-    sort: ''
+    sort: '',
+    search: ''
   }
 }

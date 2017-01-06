@@ -23,6 +23,13 @@ angular
       sortFactory.sort = $scope.currentSort;
     }
 
+    // search functionality
+    $scope.searchTerm = '',
+    $scope.search = function() {
+      // console.log($scope.searchTerm);
+      sortFactory.search = $scope.searchTerm;
+    };
+
   }])
   .directive('actionBar', function() {
     return {

@@ -21,7 +21,7 @@
         </tr>
       </form>
 
-      <tr ng-repeat='row in rows | orderBy:colSortName:sortName'>
+      <tr ng-repeat='row in rows | orderBy:colSortName:sortName | filter:searchTerm'>
         <td>
           <a href="" id="deleteRecord"><i class="material-icons">delete</i></a>
           <div class="mdl-tooltip" data-mdl-for="deleteRecord">
