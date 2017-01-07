@@ -24,17 +24,20 @@
       </form>
       <!--display records with right columns. double ng-repeat. add filters-->
       <!--delete not implemented-->
-      <tr ng-repeat='row in rows | orderBy:colSortName:sortName | filter:searchTerm'>
+      <tr ng-repeat='(key,row) in rows | orderBy:colSortName:sortName | filter:searchTerm'>
+
         <td>
+          {{key}}
           <a href="" id="deleteRecord"><i class="material-icons">delete</i></a>
           <div class="mdl-tooltip" data-mdl-for="deleteRecord">
             Delete this record (this can't be undone!)
           </div>
         </td>
-        <td ng-repeat='col in columnNames' style="text-align: left">
-          {{row[col]}}, {{enrichment[row][col]['type']}}
-          <span ng-switch="enrichment[row][col]['type']">
-            <span ng-switch-when="image"><img src="{{enrichment[row][col]['resource']}}"></span>
+        <td ng-repeat='col in columnNames track by $index' style="text-align: left">
+          {{row[col]}}, !!!!{{col}}, hello{{key}} {{enrichment[key][col]['type']}}
+          <img src="{{enrichment[key][$index]['resource']}}">
+          <span ng-switch="enrichment[key][col]['type']">hi
+            <span ng-switch-when="image"></span>
             
           </span>
        </td>
