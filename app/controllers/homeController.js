@@ -1,6 +1,6 @@
 angular
   .module('HomeController', ['ngRoute', 'rowFactory', 'databaseFactory', 'sortFactory'])
-  .controller('HomeController', ['$scope', '$window', 'rowFactory', 'databaseFactory', 'sortFactory','$http', HomeController]);
+  .controller('HomeController', ['$scope', '$window', 'rowFactory', 'databaseFactory', 'sortFactory','$http', HomeController]); 
 
 function HomeController($scope, $window, rowFactory, databaseFactory, sortFactory, $http) {
   // creates and watches changes rowfactory for changes to the database records and columns
@@ -8,6 +8,17 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
   $scope.columnNames = [];
   $scope.$watch(function () { return rowFactory.rows }, function (oldVal, newVal) {
     if (newVal) {
+      console.log('this is rowFactory.rows', rowFactory.rows[0])
+      Object.keys(rowFactory.rows).forEach(function(row, i){
+        Object.keys(rowFactory.rows[row]).forEach(function(column, j){
+          // enrichment functions
+          rowFactory.rows[row][column] += '<img src="http://img.lum.dolimg.com/v1/images/character_themuppets_pepe_86d94b17.jpeg?region=0,0,300,300" alt=""/>'
+          console.log('!' ,rowFactory.rows[row][column])
+        })
+        //console.log(i,row)
+      //console.log(rowFactory.rows[row])
+      })
+
       $scope.rows = rowFactory.rows;
       $scope.columnNames = Object.keys($scope.rows[0]);
       console.log('Rows changed')

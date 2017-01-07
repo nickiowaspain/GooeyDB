@@ -31,7 +31,13 @@
             Delete this record (this can't be undone!)
           </div>
         </td>
-        <td ng-repeat='col in columnNames' style="text-align: left">{{row[col]}}</td>
+        <td ng-repeat='col in columnNames' style="text-align: left">
+          {{row[col]}}
+          <span ng-switch="enrichment[col]['type']">
+            <span ng-switch-when="image"><img src="{{enrichment[col]['resource']}}" alt=""></span>
+            
+          </span>
+       </td>
       </tr>
     </tbody>
   </table>
