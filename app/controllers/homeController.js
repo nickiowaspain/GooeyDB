@@ -6,14 +6,29 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
   // creates and watches changes rowfactory for changes to the database records and columns
   $scope.rows = rowFactory.rows;
   $scope.columnNames = [];
+  $scope.enrichment = [];
   $scope.$watch(function () { return rowFactory.rows }, function (oldVal, newVal) {
     if (newVal) {
       console.log('this is rowFactory.rows', rowFactory.rows[0])
       Object.keys(rowFactory.rows).forEach(function(row, i){
         Object.keys(rowFactory.rows[row]).forEach(function(column, j){
           // enrichment functions
-          rowFactory.rows[row][column] += '<img src="http://img.lum.dolimg.com/v1/images/character_themuppets_pepe_86d94b17.jpeg?region=0,0,300,300" alt=""/>'
-          console.log('!' ,rowFactory.rows[row][column])
+          $scope.enrichment[row] = [];
+          if(rowFactory.rows[row][column].match(/\.(jpg|png|gif)/ )) {
+            console.log(row, column, true)
+             $scope.enrichment[row][column] = {
+          type:'image',
+          resource: 'http://img.lum.dolimg.com/v1/images/character_themuppets_pepe_86d94b17.jpeg?region=0,0,300,300'
+          };
+
+        }else{
+          console.log(false)
+          $scope.enrichment[row][column] = {};
+        }
+        
+       
+        console.log('this is scope.enrichment' , $scope.enrichment)
+        console.log('!' , rowFactory.rows[row][column])
         })
         //console.log(i,row)
       //console.log(rowFactory.rows[row])

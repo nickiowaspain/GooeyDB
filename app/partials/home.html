@@ -32,9 +32,9 @@
           </div>
         </td>
         <td ng-repeat='col in columnNames' style="text-align: left">
-          {{row[col]}}
-          <span ng-switch="enrichment[col]['type']">
-            <span ng-switch-when="image"><img src="{{enrichment[col]['resource']}}" alt=""></span>
+          {{row[col]}}, {{enrichment[row][col]['type']}}
+          <span ng-switch="enrichment[row][col]['type']">
+            <span ng-switch-when="image"><img src="{{enrichment[row][col]['resource']}}"></span>
             
           </span>
        </td>
