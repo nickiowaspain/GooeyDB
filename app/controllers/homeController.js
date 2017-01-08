@@ -1,52 +1,41 @@
 angular
   .module('HomeController', ['ngRoute', 'rowFactory', 'databaseFactory', 'sortFactory'])
-  .controller('HomeController', ['$scope', '$window', 'rowFactory', 'databaseFactory', 'sortFactory','$http', HomeController]); 
+  .controller('HomeController', ['$scope', '$window', 'rowFactory', 'databaseFactory', 'sortFactory','$http', '$sce',HomeController]); 
 
-function HomeController($scope, $window, rowFactory, databaseFactory, sortFactory, $http) {
+function HomeController($scope, $window, rowFactory, databaseFactory, sortFactory, $http, $sce) {
   // creates and watches changes rowfactory for changes to the database records and columns
   $scope.rows = rowFactory.rows;
   $scope.columnNames = [];
   $scope.enrichment = [];
   $scope.$watch(function () { return rowFactory.rows }, function (oldVal, newVal) {
     if (newVal) {
-      console.log('this is rowFactory.rows', rowFactory.rows)
       Object.keys(rowFactory.rows).forEach(function(row, i){
-      console.log('this is ROWWWW', rowFactory.rows)
-      
-         //$scope.enrichment[row] = [];
-         let temp = [];
+        let temp = [];
         Object.keys(rowFactory.rows[row]).forEach(function(column, j){
           // enrichment functions
-         
-          if(rowFactory.rows[row][column].match(/\.(jpg|png|gif)/ )) {
-            console.log('mine!!!!' , row, column, true)
-            
-            temp.push({
+        if(rowFactory.rows[row][column].match(/\.(jpg|png|gif)/)) {
+          temp.push({
           type:'image',
-          resource: 'http://img.lum.dolimg.com/v1/images/character_themuppets_pepe_86d94b17.jpeg?region=0,0,300,300'
+          resource: rowFactory.rows[row][column]
           })
-          //    $scope.enrichment[row][column] = {
-          // type:'image',
-          // resource: 'http://img.lum.dolimg.com/v1/images/character_themuppets_pepe_86d94b17.jpeg?region=0,0,300,300'
-          // };
-
-        }else{
-          console.log(false)
+          
+        } else if (rowFactory.rows[row][column].match(/(youtube.com|youtu.be)/g)) {
+          let embedLink = rowFactory.rows[row][column].replace(/watch\?v=/, "embed/")
+          console.log(embedLink)
+          
+          temp.push({
+            type:'youtube',
+            resource: $sce.trustAsResourceUrl(embedLink + "?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com")
+          })
+        } else {
           temp.push({});
-          // $scope.enrichment[row][column] = {};
         }
-        
-       
-        console.log('this is scope.enrichment' , $scope.enrichment)
-        console.log('!' , rowFactory.rows[row][column])
-        })
-        $scope.enrichment.push(temp);
-        //console.log(i,row)
-      //console.log(rowFactory.rows[row])
       })
-
-      $scope.rows = rowFactory.rows;
-      $scope.columnNames = Object.keys($scope.rows[0]);
+      $scope.enrichment.push(temp);
+      console.log('this is enrichment!!!!' , $scope.enrichment)
+    })
+    $scope.rows = rowFactory.rows;
+    $scope.columnNames = Object.keys($scope.rows[0]);
       console.log('Rows changed')
     }
     if (oldVal) {
@@ -101,5 +90,5 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
 
     });
   }
-  
+
 }
