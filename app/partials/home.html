@@ -31,7 +31,8 @@
             Delete this record (this can't be undone!)
           </div>
         </td>
-        <td ng-repeat='col in columnNames' style="text-align: left">{{row[col]}}</td>
+        <td ng-repeat='col in columnNames track by $index' style="text-align: left">{{row[col]}}</td>
+          
       </tr>
     </tbody>
   </table>

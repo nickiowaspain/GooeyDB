@@ -6,16 +6,37 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
   // creates and watches changes rowfactory for changes to the database records and columns
   $scope.rows = rowFactory.rows;
   $scope.columnNames = [];
+  $scope.enrichment = [];
   $scope.$watch(function () { return rowFactory.rows }, function (oldVal, newVal) {
     if (newVal) {
       $scope.rows = rowFactory.rows;
       $scope.columnNames = Object.keys($scope.rows[0]);
-      console.log('Rows changed')
+
+      Object.keys(rowFactory.rows).forEach(function(row, i){
+      
+         let temp = [];
+        Object.keys(rowFactory.rows[row]).forEach(function(column, j){
+
+          if(rowFactory.rows[row][column].match(/\.(jpg|png|gif)/ )) { 
+            temp.push({
+            type:'image',
+           resource: 'http://img.lum.dolimg.com/v1/images/character_themuppets_pepe_86d94b17.jpeg?region=0,0,300,300'
+          })
+        
+        }else{
+          console.log(false)
+          temp.push({});
+          
+        }
+        })  
+      });
+      $scope.enrichment.push(temp)
     }
     if (oldVal) {
       console.log('No change')
     }
   });
+  console.log('enrichment!!!!!', $scope.enrichment)
 
   //creates and watches changes to sortFactory for the search field filter
   $scope.searchTerm = null;
