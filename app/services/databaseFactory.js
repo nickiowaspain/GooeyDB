@@ -3,8 +3,8 @@ angular
   .factory('databaseFactory', function () {
     return {
       dbName: 'users',
-      user: 'brianrudloff',
-      password: 'wookie42',
+      user: 'me',
+      password: 'computer',
       url: 'localhost'
     }
   });
