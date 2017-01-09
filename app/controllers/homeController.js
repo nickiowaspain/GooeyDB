@@ -27,11 +27,13 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
   $scope.rows = rowFactory.rows;
   $scope.columnNames = [];
   $scope.enrichment = [];
+ 
   $scope.$watch(function () { return rowFactory.rows }, function (oldVal, newVal) {
     if (newVal) {
       Object.keys(rowFactory.rows).forEach(function(row, i){
         let temp = [];
         Object.keys(rowFactory.rows[row]).forEach(function(column, j){
+          console.log(column)
           // enrichment functions
         if(rowFactory.rows[row][column].match(/\.(jpg|png|gif)/)) {
           temp.push({
@@ -46,6 +48,7 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
           temp.push({
             type:'youtube',
             resource: $sce.trustAsResourceUrl(embedLink + "?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com")
+
           });
         } else if (checkAddress(rowFactory.rows[row][column])) {
           temp.push({
@@ -53,6 +56,13 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
             resource: 'https://maps.google.com?q=' + rowFactory.rows[row][column]
             //resource: 'https://maps.googleapis.com/maps/api/staticmap?center=' + rowFactory.rows[row][column] + '&zoom=15&scale=false&size=400x200&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C' + rowFactory.rows[row][column]
           });
+        } else if (column === 'name') {
+          let searchName = rowFactory.rows[i].name;
+          temp.push({
+            type:'facebook',
+            resource: 'https://www.facebook.com/search/people/?q=' + searchName,
+            resource1: 'https://www.linkedin.com/vsearch/f?type=all&keywords=' + searchName + '&orig=GLHD&rsid=&pageKey=nprofile_view_nonself&trkInfo=tarId%3A1483993693632&trk=global_header&search=Search'
+          })
         } else {
           temp.push({});
         }
