@@ -35,6 +35,7 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
         Object.keys(rowFactory.rows[row]).forEach(function(column, j){
           console.log(column)
           // enrichment functions
+        console.log('rowfactory!!!!!', rowFactory.rows[row][column])
         if(rowFactory.rows[row][column].match(/\.(jpg|png|gif)/)) {
           temp.push({
             type:'image',
@@ -63,6 +64,18 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
             resource: 'https://www.facebook.com/search/people/?q=' + searchName,
             resource1: 'https://www.linkedin.com/vsearch/f?type=all&keywords=' + searchName + '&orig=GLHD&rsid=&pageKey=nprofile_view_nonself&trkInfo=tarId%3A1483993693632&trk=global_header&search=Search'
           })
+        } else if(rowFactory.rows[row][column].match(/\.(mp3|wav)/)) {
+          temp.push({
+          type:'mp3',
+          resource: rowFactory.rows[row][column]
+          })
+         } else if(column === 'github_handle') {
+           let tempHandle = rowFactory.rows[i].github_handle;
+           console.log('TEMPHANDLE', tempHandle)
+           temp.push({
+            type:'github',
+           resource: 'https://github.com/' + tempHandle})
+
         } else {
           temp.push({});
         }
@@ -73,11 +86,13 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
     $scope.rows = rowFactory.rows;
     $scope.columnNames = Object.keys($scope.rows[0]);
       console.log('Rows changed')
+
     }
     if (oldVal) {
       console.log('No change')
     }
   });
+  console.log('enrichment!!!!!', $scope.enrichment)
 
   //creates and watches changes to sortFactory for the search field filter
   $scope.searchTerm = null;
