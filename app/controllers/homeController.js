@@ -54,8 +54,8 @@ function HomeController($scope, $window, rowFactory, databaseFactory, sortFactor
         } else if (checkAddress(rowFactory.rows[row][column])) {
           temp.push({
             type:'map',
-            resource: 'https://maps.google.com?q=' + rowFactory.rows[row][column]
-            //resource: 'https://maps.googleapis.com/maps/api/staticmap?center=' + rowFactory.rows[row][column] + '&zoom=15&scale=false&size=400x200&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C' + rowFactory.rows[row][column]
+            resource: 'https://maps.google.com?q=' + rowFactory.rows[row][column],
+            mapImage: 'https://maps.googleapis.com/maps/api/staticmap?center=' + rowFactory.rows[row][column] + '&zoom=15&scale=false&size=400x200&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C' + rowFactory.rows[row][column]
           });
         } else if (column === 'name') {
           let searchName = rowFactory.rows[i].name;

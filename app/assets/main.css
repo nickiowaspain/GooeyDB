@@ -424,7 +424,7 @@ fieldset {
   .button:focus {
     outline: none; }
 
-a img.google-map, a img.facebook, a img.github {
+a img.map-icon, a img.facebook, a img.github {
   width: 40px;
   height: 40px; }
 
@@ -435,3 +435,12 @@ a img.google-map, a img.facebook, a img.github {
 .hover-expand:hover {
   max-width: 200px;
   max-height: 200px; }
+
+.map-expand .image-map {
+  display: none; }
+
+.map-expand:hover .image-map {
+  display: inline; }
+
+.map-expand:hover .map-icon {
+  display: none; }
