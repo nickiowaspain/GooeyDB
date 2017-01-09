@@ -24,16 +24,31 @@
       </form>
       <!--display records with right columns. double ng-repeat. add filters-->
       <!--delete not implemented-->
-      <tr ng-repeat='row in rows | orderBy:colSortName:sortName | filter:searchTerm'>
+      <tr ng-repeat='(key,row) in rows | orderBy:colSortName:sortName | filter:searchTerm'>
         <td>
           <a href="" id="deleteRecord"><i class="material-icons">delete</i></a>
           <div class="mdl-tooltip" data-mdl-for="deleteRecord">
             Delete this record (this can't be undone!)
           </div>
         </td>
-        <td ng-repeat='col in columnNames track by $index' style="text-align: left">{{row[col]}}</td>
-          
+
+        <td ng-repeat='col in columnNames track by $index' style="text-align: left">
+          {{row[col]}}
+          <span ng-switch="enrichment[key][$index]['type']">
+            <span ng-switch-when="image"><img src="{{enrichment[key][$index]['resource']}}"></span>
+            <span ng-switch-when="youtube">Hello
+              <!--<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="356" height="200" type="text/html" ng-src="{{enrichment[key][$index]['resource']}}?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com"></iframe> -->
+              <iframe id="ytplayer" type="text/html" width="640" height="360" ng-src="ytlink{{key}}{{$index}}" frameborder="0"></iframe>
+            </span>
+            <span ng-switch-when="mp3"><audio controls>
+              <source src="{{enrichment[key][$index]['resource']}}" type="audio/mpeg">
+              </audio>  
+            </span>
+            <span ng-switch-when="github"><a href="{{enrichment[key][$index]['resource']}}"><img class="github" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"/></a></span>
+       </td>
+
       </tr>
     </tbody>
   </table>
 </div>
+

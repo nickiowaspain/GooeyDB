@@ -423,3 +423,7 @@ fieldset {
     opacity: 0; }
   .button:focus {
     outline: none; }
+
+.github {
+  width: 40px;
+  height: 40px; }
