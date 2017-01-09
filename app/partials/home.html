@@ -34,7 +34,8 @@
         <td ng-repeat='col in columnNames track by $index' style="text-align: left">
           {{row[col]}} 
           <span ng-switch="enrichment[key][$index]['type']">
-            <span ng-switch-when="image"><img src="{{enrichment[key][$index]['resource']}}"></span>
+            <span ng-switch-when="image"><img src="{{enrichment[key][$index]['resource']}}"/></span>
+            <span ng-switch-when="map"><a href="{{enrichment[key][$index]['resource']}}" target="_map"><img class="google-map" src="assets/google-maps-icon.png"/></a></span>
             <span ng-switch-when="youtube">Hello
               <!--<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="356" height="200" type="text/html" ng-src="{{enrichment[key][$index]['resource']}}?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com"></iframe> -->
               <iframe id="ytplayer" type="text/html" width="640" height="360" ng-src="ytlink{{key}}{{$index}}" frameborder="0"></iframe>
